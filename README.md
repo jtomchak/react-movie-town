@@ -72,4 +72,20 @@ this.setState({
 }
 ```
 
-9.  **ROUTING** Our details button! The business has asked, that rather than a modal, we take the user to a details page of the movie.
+9.  **ROUTING** Our details button! The business has asked, that rather than a modal, we take the user to a details page of the movie. `npm install --save react-router-dom`
+
+1.  Router component for the environment you’re targeting and render it at the top of your app.
+
+```js
+//index.js
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById("root")
+);
+```
+
+[Imgur](https://i.imgur.com/UEOnrY5.png)
+
+2.  Now we can change the route, and conditionally render Components based on the route or URL path in the browser!!!!

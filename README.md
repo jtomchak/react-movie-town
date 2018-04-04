@@ -44,3 +44,30 @@ this.setState({
 * We probably want to filter out movies that don't have a poster path. Don't want any broken images showing up!!
 
 7.  Once we've got our posters rendering to the page, it's time we style them up, and get them looking nice. [Bootstrap Thumbnails](https://react-bootstrap.github.io/components/images/#thumbnail-divider)
+
+* Rather than using class to leverage bootstrap, we are going to use some helpful Components to do so. `import { Grid, Row, Col, Thumbnail, Button, Clearfix } from "react-bootstrap";`
+* Instead of setting `col-md-4` we will pass props to the `<Col/>` Component like so `<Col sm={6} md={4}>`
+
+```js
+//MoviePosterList
+<Col sm={6} md={4}>
+  <Thumbnail src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="242x200">
+    <h3>{movie.title}</h3>
+    <p>{movie.overview}</p>
+    <p>
+      <Button bsStyle="primary">Details</Button>
+    </p>
+  </Thumbnail>
+</Col>
+```
+
+8.  This looks good, but what's up with the holes? We need to apply a bit of Bootstrap clearfix to our row so that each row starts at the same level. We've got `<Clearfix visibleSmBlock />` or `<Clearfix visibleMdBlock visibleLgBlock />` that we want to apply after a poster, before it wraps to a new line. In this case, 2 posters for sm, and 3 posters for md and lg.
+    **Conditionally rendering** is what we can use to decide when and what to add an element in.
+
+```js
+//MoviePosterList
+//Here the Clearfix will only be added in the render if the first part evaluates to True. Because of the '&&'
+{
+  (idx + 1) % 2 === 0 && <Clearfix visibleSmBlock />;
+}
+```

@@ -30,4 +30,13 @@ const MOVIE_URL =
 
 We are using `fetch` to do our HTTP request, that returns a promise. So we use `.then()` and `.catch()` to handle the resolve and rejection of the promise.
 
-5.
+5.  Now we have our movies payload, we can set the array of movie objects to state using **setState**, so our application remembers the movies for rendering.
+
+```js
+//App.js
+this.setState({
+  movies: payload.results
+});
+```
+
+6.  Now state knows about our movies we can render the movie posters onto the page!!! `"https://image.tmdb.org/t/p/w500/" + movie.poster_path`

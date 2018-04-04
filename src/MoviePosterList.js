@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Row, Col, Thumbnail, Button, Clearfix } from "react-bootstrap";
+import { Row, Col, Thumbnail, Button, Clearfix } from "react-bootstrap";
 
 const MoviePosterList = ({ movies }) => {
   //const MovieCardItem = props => {

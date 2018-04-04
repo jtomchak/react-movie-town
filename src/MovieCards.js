@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Row, Col, Thumbnail, Button } from "react-bootstrap";
+import { Grid } from "react-bootstrap";
 import MoviePosterList from "./MoviePosterList";
 
 class MovieCards extends Component {

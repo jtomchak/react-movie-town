@@ -71,3 +71,5 @@ this.setState({
   (idx + 1) % 2 === 0 && <Clearfix visibleSmBlock />;
 }
 ```
+
+9.  **ROUTING** Our details button! The business has asked, that rather than a modal, we take the user to a details page of the movie.

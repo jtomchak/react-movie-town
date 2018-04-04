@@ -40,3 +40,7 @@ this.setState({
 ```
 
 6.  Now state knows about our movies we can render the movie posters onto the page!!! `"https://image.tmdb.org/t/p/w500/" + movie.poster_path`
+
+* We probably want to filter out movies that don't have a poster path. Don't want any broken images showing up!!
+
+7.  Once we've got our posters rendering to the page, it's time we style them up, and get them looking nice. [Bootstrap Thumbnails](https://react-bootstrap.github.io/components/images/#thumbnail-divider)

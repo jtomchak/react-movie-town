@@ -86,6 +86,6 @@ ReactDOM.render(
 );
 ```
 
-[Imgur](https://i.imgur.com/UEOnrY5.png)
+![Imgur](https://i.imgur.com/UEOnrY5.png)
 
 2.  Now we can change the route, and conditionally render Components based on the route or URL path in the browser!!!!

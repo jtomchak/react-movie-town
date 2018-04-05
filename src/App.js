@@ -1,23 +1,12 @@
 import React, { Component } from "react";
-import { Grid, Navbar, Jumbotron } from "react-bootstrap";
-import MovieCards from "./MovieCards";
-const MOVIE_URL =
-  "https://api.themoviedb.org/3/search/movie?api_key=2434d246ec60c162a86db597467ef4ed&language=en-US&query=hiphop&include_adult=false&sort_by=created_at.asc&page=1";
+import { Grid, Navbar, Jumbotron, Nav, NavDropdown, MenuItem, NavItem } from "react-bootstrap";
+import { Link, Route } from "react-router-dom";
+import Movies from "./Movies";
+import MovieDetails from "./MovieDetails";
 
 class App extends Component {
-  state = {
-    movies: []
-  };
-  componentDidMount() {
-    fetch(MOVIE_URL)
-      .then(response => response.json())
-      .then(payload =>
-        this.setState({
-          movies: payload.results.filter(m => m.poster_path)
-        })
-      )
-      .catch(err => console.log(err));
-  }
+  //movies -> Movie Component
+  //movies/:movieId -> MovieDetails Component
   render() {
     return (
       <div style={{ backgroundColor: "lightgray" }}>
@@ -27,8 +16,14 @@ class App extends Component {
               <Navbar.Brand>
                 <a href="/">Movie Town App</a>
               </Navbar.Brand>
+
               <Navbar.Toggle />
             </Navbar.Header>
+            <Nav>
+              <NavItem>
+                <Link to="/movies">Moives</Link>
+              </NavItem>
+            </Nav>
           </Grid>
         </Navbar>
         <Jumbotron>
@@ -36,7 +31,8 @@ class App extends Component {
             <h1>Hip Hop Movies</h1>
           </Grid>
         </Jumbotron>
-        <MovieCards movies={this.state.movies} />
+        <Route exact path="/movies" component={Movies} />
+        <Route path="/movies/:movieId" component={MovieDetails} />
       </div>
     );
   }

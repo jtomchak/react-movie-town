@@ -1,9 +1,10 @@
 import React from "react";
 import { Row, Col, Thumbnail, Button, Clearfix } from "react-bootstrap";
 
-const MoviePosterList = ({ movies }) => {
+const MoviePosterList = ({ movies, onClickDetails }) => {
   //const MovieCardItem = props => {
   // let movies = props.movies;
+
   return (
     <Row>
       {movies.map((movie, idx) => (
@@ -13,7 +14,9 @@ const MoviePosterList = ({ movies }) => {
               <h3>{movie.title}</h3>
               <p>{movie.overview}</p>
               <p>
-                <Button bsStyle="primary">Details</Button>
+                <Button bsStyle="primary" onClick={() => onClickDetails(movie.id)}>
+                  Details
+                </Button>
               </p>
             </Thumbnail>
           </Col>

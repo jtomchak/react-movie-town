@@ -97,4 +97,6 @@ ReactDOM.render(
 
 12. We've moved around some of the components in our application so that the `App.js` will have the routing and not the logic for each "page".
 
-![Imgur](https://i.imgur.com/W3Q6V8R.png)
+![Imgur](https://i.imgur.com/W3Q6V8R.png)i
+
+13. The idea now is that our Movie Posters List will render on the 'Movies' route, and when we click on the details of that poster, it will `props.history.push()` to '/movies/WHATEVER THE MOVIEID IS'. To achieve this, we want to pass a function as props from `Movies` to `MoviesCards` and from `MovieCards` to `MoviePosterList`. This function is declared in the parent `Movies`, but being invoked by the onClick method of each details button of the child component!!!! That's super rad!

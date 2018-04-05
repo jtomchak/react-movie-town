@@ -74,7 +74,7 @@ this.setState({
 
 9.  **ROUTING** Our details button! The business has asked, that rather than a modal, we take the user to a details page of the movie. `npm install --save react-router-dom`
 
-1.  Router component for the environment you’re targeting and render it at the top of your app. Once applied we should be able to see Router and a parent to our App Component.
+10. Router component for the environment you’re targeting and render it at the top of your app. Once applied we should be able to see Router and a parent to our App Component.
 
 ```js
 //index.js
@@ -88,4 +88,13 @@ ReactDOM.render(
 
 ![Imgur](https://i.imgur.com/UEOnrY5.png)
 
-2.  Now we can change the route, and conditionally render Components based on the route or URL path in the browser!!!!
+11. Now we can change the route, and conditionally render Components based on the route or URL path in the browser!!!!
+
+```js
+  <Route exact path="/movies" component={Movies} />
+  <Route path="/movies/:movieId" component={MovieDetails} />
+```
+
+12. We've moved around some of the components in our application so that the `App.js` will have the routing and not the logic for each "page".
+
+![Imgur](https://i.imgur.com/W3Q6V8R.png)

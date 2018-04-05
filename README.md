@@ -74,7 +74,7 @@ this.setState({
 
 9.  **ROUTING** Our details button! The business has asked, that rather than a modal, we take the user to a details page of the movie. `npm install --save react-router-dom`
 
-1.  Router component for the environment you’re targeting and render it at the top of your app.
+1.  Router component for the environment you’re targeting and render it at the top of your app. Once applied we should be able to see Router and a parent to our App Component.
 
 ```js
 //index.js

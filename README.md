@@ -100,3 +100,7 @@ ReactDOM.render(
 ![Imgur](https://i.imgur.com/W3Q6V8R.png)i
 
 13. The idea now is that our Movie Posters List will render on the 'Movies' route, and when we click on the details of that poster, it will `props.history.push()` to '/movies/WHATEVER THE MOVIEID IS'. To achieve this, we want to pass a function as props from `Movies` to `MoviesCards` and from `MovieCards` to `MoviePosterList`. This function is declared in the parent `Movies`, but being invoked by the onClick method of each details button of the child component!!!! That's super rad!
+
+14. Now in our `MovieDetails` Component we have access to the movieId from `props.match.params.movieId` and we can use that variable to make a fetch request for the details of that particular movie by it's id.
+
+15. With the details we can make our details page, super pretty!!

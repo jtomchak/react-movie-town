@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Navbar, Jumbotron, Nav, NavDropdown, MenuItem, NavItem } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import { Link, Route } from "react-router-dom";
 import Movies from "./Movies";
 import MovieDetails from "./MovieDetails";
@@ -11,20 +12,14 @@ class App extends Component {
     return (
       <div style={{ backgroundColor: "lightgray" }}>
         <Navbar inverse fixedTop>
-          <Grid>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <a href="/">Movie Town App</a>
-              </Navbar.Brand>
-
-              <Navbar.Toggle />
-            </Navbar.Header>
-            <Nav>
-              <NavItem>
-                <Link to="/movies">Moives</Link>
-              </NavItem>
-            </Nav>
-          </Grid>
+          <Nav pullRight>
+            <LinkContainer to="/movies">
+              <NavItem eventKey={1}>Movies</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/">
+              <NavItem eventKey={2}>Search</NavItem>
+            </LinkContainer>
+          </Nav>
         </Navbar>
         <Jumbotron>
           <Grid>

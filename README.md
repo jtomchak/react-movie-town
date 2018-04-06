@@ -104,3 +104,6 @@ ReactDOM.render(
 14. Now in our `MovieDetails` Component we have access to the movieId from `props.match.params.movieId` and we can use that variable to make a fetch request for the details of that particular movie by it's id.
 
 15. With the details we can make our details page, super pretty!!
+
+16. Bootstrap link error!
+    `npm install react-router-bootstrap`

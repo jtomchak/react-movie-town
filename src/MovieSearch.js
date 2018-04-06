@@ -1,5 +1,6 @@
 /*
 1. Input to query for movies
+1a. console.log(encodeURIComponent('cowboy aliens &trains'));
 2. button for onClick to search
 3. Take the input and put in the movie API URL and do the HTTP fetch
 4. Redirect to the movies component with the results form that HTTP fetch

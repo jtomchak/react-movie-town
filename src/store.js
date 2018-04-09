@@ -1,4 +1,5 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import { promiseMiddleware } from "./middleware";
 
 const initalState = {
   movies: [],
@@ -10,12 +11,18 @@ export const reducer = (state = initalState, action) => {
     case "NEW_MOVIES":
       return {
         ...state,
-        movies: action.payload
+        movies: action.payload.results.filter(m => m.poster_path),
+        inProgress: false
       };
     case "CREATE_SEARCH_TERM":
       return {
         ...state,
         searchTerm: action.payload
+      };
+    case "ASYNC_START":
+      return {
+        ...state,
+        inProgress: true
       };
 
     default:
@@ -23,7 +30,6 @@ export const reducer = (state = initalState, action) => {
   }
 };
 
-export default createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const composeDebug = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+export default createStore(reducer, composeDebug(applyMiddleware(promiseMiddleware)));

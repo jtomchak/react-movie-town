@@ -150,3 +150,11 @@ ReactDOM.render(
 20. Remove movies state from `Movies.js`. Send the movies array to the store via an action that gets dispatch from the component to the store. Once there, we can find the `MoviePosterList` component and `MapStateToProps` so that it will continue to have movies, but no more prop drilling!!!!!
 
 21. Next Let's move the 'searchTerm' from `App.js` into our store state. This will be the first step into
+
+22. Let's create some services to remove HTTP request from our components
+
+23. Now the super cool thing is we can dispatch a promise, and not even handle the resolve or reject in the component, but rather in some redux middleware.
+
+24. PromiseMiddleware.
+
+25. Updating reducer to handle 'ASYNC_START' and our new movies

@@ -10,12 +10,21 @@ class App extends Component {
   //movies -> Movie Component
   //movies/:movieId -> MovieDetails Component
   state = {
-    searchTermURI: ""
+    searchTerm: ""
   };
+
+  componentWillReceiveProps(nextProps) {
+    //reset search term for a new clean search
+    if (nextProps.location.pathname === "/") {
+      this.setState({
+        searchTerm: ""
+      });
+    }
+  }
 
   movieSearchTerm = searchTerm => {
     this.setState({
-      searchTermURI: encodeURIComponent(searchTerm)
+      searchTerm: searchTerm
     });
     this.props.history.push("/movies");
   };
@@ -34,7 +43,7 @@ class App extends Component {
         </Navbar>
         <Jumbotron>
           <Grid>
-            <h1>{this.state.searchTermURI} Movies</h1>
+            <h1>{this.state.searchTerm} Movies</h1>
           </Grid>
         </Jumbotron>
         <Route
@@ -45,7 +54,7 @@ class App extends Component {
         <Route
           exact
           path="/movies"
-          render={props => <Movies {...props} searchTermURI={this.state.searchTermURI} />}
+          render={props => <Movies {...props} searchTerm={this.state.searchTerm} />}
         />
         <Route path="/movies/:movieId" component={MovieDetails} />
       </div>

@@ -109,9 +109,40 @@ ReactDOM.render(
     `npm install react-router-bootstrap`
 
 17. Search Component
+
     1.  Input to query for movies
         1a. console.log(encodeURIComponent('cowboy aliens &trains'));
     2.  button for onClick to search
     3.  Take the input and put in the movie API URL and do the HTTP fetch
     4.  Redirect to the movies component with the results form that HTTP fetch
     5.  Our Details page should still work
+
+18. David's Bug. Search term not clearing
+    a. From search page, going back holds onto the original search
+    b. App component should clear that state property 'searchTerm' when the root is rendered, that would be the search component itself.
+
+```js
+ componentWillReceiveProps(nextProps) {
+    //reset search term for a new clean search
+    if (nextProps.location.pathname === "/") {
+      this.setState({
+        searchTerm: ""
+      });
+    }
+  }
+```
+
+19. **REDUX**
+    `npm install redux react-redux`
+    1.  Set up our store
+    2.  Set up our reducers
+    3.  Verify that it's all wired up.
+
+```js
+//index.js
+<Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
+```

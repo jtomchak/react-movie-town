@@ -1,7 +1,8 @@
 import { createStore } from "redux";
 
 const initalState = {
-  movies: []
+  movies: [],
+  searchTerm: ""
 };
 
 export const reducer = (state = initalState, action) => {
@@ -10,6 +11,11 @@ export const reducer = (state = initalState, action) => {
       return {
         ...state,
         movies: action.payload
+      };
+    case "CREATE_SEARCH_TERM":
+      return {
+        ...state,
+        searchTerm: action.payload
       };
 
     default:

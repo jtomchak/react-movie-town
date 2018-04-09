@@ -2,30 +2,33 @@ import React, { Component } from "react";
 import { Grid, Navbar, Jumbotron, Nav, NavDropdown, MenuItem, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link, Route, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+
 import Movies from "./Movies";
 import MovieSearch from "./MovieSearch";
 import MovieDetails from "./MovieDetails";
 
+const mapStateToProps = state => ({
+  searchTerm: state.searchTerm
+});
+
+const mapDispatchToProps = dispatch => ({
+  setSearchTerm: term => dispatch({ type: "CREATE_SEARCH_TERM", payload: term })
+});
+
 class App extends Component {
   //movies -> Movie Component
   //movies/:movieId -> MovieDetails Component
-  state = {
-    searchTerm: ""
-  };
 
   componentWillReceiveProps(nextProps) {
     //reset search term for a new clean search
     if (nextProps.location.pathname === "/") {
-      this.setState({
-        searchTerm: ""
-      });
+      this.props.setSearchTerm("");
     }
   }
 
   movieSearchTerm = searchTerm => {
-    this.setState({
-      searchTerm: searchTerm
-    });
+    this.props.setSearchTerm(searchTerm);
     this.props.history.push("/movies");
   };
   render() {
@@ -43,7 +46,7 @@ class App extends Component {
         </Navbar>
         <Jumbotron>
           <Grid>
-            <h1>{this.state.searchTerm} Movies</h1>
+            <h1>{this.props.searchTerm} Movies</h1>
           </Grid>
         </Jumbotron>
         <Route
@@ -54,7 +57,7 @@ class App extends Component {
         <Route
           exact
           path="/movies"
-          render={props => <Movies {...props} searchTerm={this.state.searchTerm} />}
+          render={props => <Movies {...props} searchTerm={this.props.searchTerm} />}
         />
         <Route path="/movies/:movieId" component={MovieDetails} />
       </div>
@@ -62,4 +65,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

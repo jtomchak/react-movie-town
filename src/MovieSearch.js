@@ -7,25 +7,33 @@
 5. Our Details page should still work
 */
 import React, { Component } from "react";
-import { Button, Row, Form } from "react-bootstrap";
+import { Col, Grid, Button, Row, Form } from "react-bootstrap";
 
 import "./movieSearch.css";
 
 class MovieSearch extends Component {
   render() {
     return (
-      <div>
-        <Row md={8}>
-          <div className="search-box">
+      <Grid>
+        <Row>
+          <Col md={6} mdPush={3} className="search-box">
             <Form className="search-form">
-              <input placeholder="movie search" type="text" ref={input => (this.input = input)} />
-              <Button onClick={() => this.props.movieSearchTerm(this.input.value)}>
-                Find Movie
+              <input
+                className="form-control"
+                placeholder="movie search"
+                type="text"
+                ref={input => (this.input = input)}
+              />
+              <Button
+                className="btn btn-link search-btn"
+                onClick={() => this.props.movieSearchTerm(this.input.value)}
+              >
+                <i className="glyphicon glyphicon-search" />
               </Button>
             </Form>
-          </div>
+          </Col>
         </Row>
-      </div>
+      </Grid>
     );
   }
 }

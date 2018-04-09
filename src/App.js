@@ -30,8 +30,8 @@ class App extends Component {
   };
   render() {
     return (
-      <div style={{ backgroundColor: "lightgray" }}>
-        <Navbar inverse fixedTop>
+      <div>
+        <Navbar inverse style={{ marginBottom: "0px" }}>
           <Nav pullRight>
             <LinkContainer to="/movies">
               <NavItem eventKey={1}>Movies</NavItem>

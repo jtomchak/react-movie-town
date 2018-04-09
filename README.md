@@ -146,3 +146,5 @@ ReactDOM.render(
     </Router>
   </Provider>,
 ```
+
+20. Remove movies state from `Movies.js`. Send the movies array to the store via an action that gets dispatch from the component to the store. Once there, we can find the `MoviePosterList` component and `MapStateToProps` so that it will continue to have movies, but no more prop drilling!!!!!

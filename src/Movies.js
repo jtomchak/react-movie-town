@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { Grid, Navbar, Jumbotron } from "react-bootstrap";
+import { connect } from "react-redux";
 import MovieCards from "./MovieCards";
+
+const mapDispatchToProps = dispatch => ({
+  newMovies: movies => dispatch({ type: "NEW_MOVIES", payload: movies })
+});
 
 class Movies extends Component {
   state = {
@@ -13,19 +18,17 @@ class Movies extends Component {
 
     fetch(MOVIE_URL)
       .then(response => response.json())
-      .then(payload =>
-        this.setState({
-          movies: payload.results.filter(m => m.poster_path)
-        })
-      )
+      .then(payload => {
+        this.props.newMovies(payload.results.filter(m => m.poster_path));
+      })
       .catch(err => console.log(err));
   }
   onClickDetails = movieId => {
     this.props.history.push(`movies/${movieId}`);
   };
   render() {
-    return <MovieCards movies={this.state.movies} onClickDetails={this.onClickDetails} />;
+    return <MovieCards onClickDetails={this.onClickDetails} />;
   }
 }
 
-export default Movies;
+export default connect(null, mapDispatchToProps)(Movies);

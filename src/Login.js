@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { connect } from "react-redux";
 import services from "./services";
 
 import "./login.css";
 
-export default class Login extends Component {
+const mapDispatchToProps = dispatch => ({
+  login: (email, password) =>
+    dispatch({ type: "LOGIN", payload: services.User.login(email, password) })
+});
+
+class Login extends Component {
   state = {
     email: "",
     password: ""
@@ -22,14 +28,7 @@ export default class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    services.User.login(this.state.email, this.state.password)
-      .then(res => res.json())
-      .then(payload => {
-        this.setState({
-          userPayload: payload
-        });
-      })
-      .catch(err => this.setState({ error: err }));
+    this.props.login(this.state.email, this.state.password);
   };
 
   render() {
@@ -57,3 +56,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default connect(null, mapDispatchToProps)(Login);

@@ -3,7 +3,8 @@ import { promiseMiddleware } from "./middleware";
 
 const initalState = {
   movies: [],
-  searchTerm: ""
+  searchTerm: "",
+  isAuthenticated: false
 };
 
 export const reducer = (state = initalState, action) => {
@@ -23,6 +24,12 @@ export const reducer = (state = initalState, action) => {
       return {
         ...state,
         inProgress: true
+      };
+    case "LOGIN":
+      return {
+        ...state,
+        user: action.payload.user,
+        isAuthenticated: action.payload.user ? true : false
       };
 
     default:

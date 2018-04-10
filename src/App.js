@@ -10,7 +10,9 @@ import MovieDetails from "./MovieDetails";
 import Login from "./Login";
 
 const mapStateToProps = state => ({
-  searchTerm: state.searchTerm
+  searchTerm: state.searchTerm,
+  user: state.user,
+  userAuthenticated: state.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({

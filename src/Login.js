@@ -6,8 +6,8 @@ import "./login.css";
 
 export default class Login extends Component {
   state = {
-    email: "meow@pants.com",
-    password: "password18"
+    email: "",
+    password: ""
   };
 
   validateForm() {

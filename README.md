@@ -171,3 +171,28 @@ ReactDOM.render(
   }
 }
 ```
+
+```js
+//services.js
+const User = {
+  login: (email, password) =>
+    fetch(API_URL + "users/login", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        user: {
+          email: email,
+          password: password
+        }
+      })
+    })
+};
+```
+
+28. So we know that `services.User.login(this.state.email, this.state.password)` that is now a promise. And where in the past have we 'comsumed' our promises? Yep, in the redux **middleware**
+    1.  Wire up dispatch to the login component, so we can send this sucker off.
+    2.  Ensure that the middleware is handling the promise correctly
+    3.  Add a case in our reducer.

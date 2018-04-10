@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import services from "./services";
+
 import "./login.css";
 
 export default class Login extends Component {
   state = {
-    email: "",
-    password: ""
+    email: "meow@pants.com",
+    password: "password18"
   };
 
   validateForm() {
@@ -20,6 +22,14 @@ export default class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    services.User.login(this.state.email, this.state.password)
+      .then(res => res.json())
+      .then(payload => {
+        this.setState({
+          userPayload: payload
+        });
+      })
+      .catch(err => this.setState({ error: err }));
   };
 
   render() {

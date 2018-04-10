@@ -43,6 +43,9 @@ class App extends Component {
             <LinkContainer to="/">
               <NavItem eventKey={2}>Search</NavItem>
             </LinkContainer>
+            <LinkContainer to="/login">
+              <NavItem eventKey={3}>Login</NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar>
         <Jumbotron>

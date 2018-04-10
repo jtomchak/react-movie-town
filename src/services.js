@@ -1,4 +1,5 @@
 const MOVIE_BASE_URL = `https://api.themoviedb.org/3`;
+const API_URL = `https://codercamps-conduit.herokuapp.com/api/`;
 
 const Movie = {
   getDetails: movieId =>
@@ -11,7 +12,22 @@ const Movie = {
   }
 };
 
-const User = {};
+const User = {
+  login: () =>
+    fetch(API_URL + "users/login", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        user: {
+          email: "meow@pants.com",
+          password: "password18"
+        }
+      })
+    })
+};
 
 export default {
   Movie,

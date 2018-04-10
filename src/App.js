@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import Movies from "./Movies";
 import MovieSearch from "./MovieSearch";
 import MovieDetails from "./MovieDetails";
+import Login from "./Login";
 
 const mapStateToProps = state => ({
   searchTerm: state.searchTerm
@@ -42,6 +43,9 @@ class App extends Component {
             <LinkContainer to="/">
               <NavItem eventKey={2}>Search</NavItem>
             </LinkContainer>
+            <LinkContainer to="/login">
+              <NavItem eventKey={3}>Login</NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar>
         <Jumbotron>
@@ -60,6 +64,7 @@ class App extends Component {
           render={props => <Movies {...props} searchTerm={this.props.searchTerm} />}
         />
         <Route path="/movies/:movieId" component={MovieDetails} />
+        <Route path="/login" component={Login} />
       </div>
     );
   }

@@ -13,7 +13,7 @@ const Movie = {
 };
 
 const User = {
-  login: () =>
+  login: (email, password) =>
     fetch(API_URL + "users/login", {
       method: "POST",
       headers: {
@@ -22,8 +22,8 @@ const User = {
       },
       body: JSON.stringify({
         user: {
-          email: "meow@pants.com",
-          password: "password18"
+          email: email,
+          password: password
         }
       })
     })

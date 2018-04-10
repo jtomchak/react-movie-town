@@ -160,3 +160,14 @@ ReactDOM.render(
 25. Updating reducer to handle 'ASYNC_START' and our new movies
 
 26. We need a login form that the user can get to in the nav bar @ `/login`. This component will need a input for email, and password, and a submit button to be able to HTTP Post.
+
+27. User name and password can be used @ `https://codercamps-conduit.herokuapp.com/api/users/login` as an HTTP POST
+
+```js
+{
+  "user": {
+    "email": "meow@pants.com",
+    "password": "password18"
+  }
+}
+```

@@ -193,6 +193,17 @@ const User = {
 ```
 
 28. So we know that `services.User.login(this.state.email, this.state.password)` that is now a promise. And where in the past have we 'comsumed' our promises? Yep, in the redux **middleware**
+
     1.  Wire up dispatch to the login component, so we can send this sucker off.
     2.  Ensure that the middleware is handling the promise correctly
     3.  Add a case in our reducer.
+
+    * We should be able to see the username, email, token, bio, and image on our store under user property. That's super RAD!!
+
+29. The great refactor
+
+30. How do we redirect after login
+
+31. Conditionally rendering NavBar
+
+32. Sign up Component

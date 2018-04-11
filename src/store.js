@@ -1,42 +1,10 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import { promiseMiddleware } from "./middleware";
 
-const initalState = {
-  movies: [],
-  searchTerm: "",
-  isAuthenticated: false
-};
+import reducer from "./reducers";
+//import reducer from "./reducers/index"
 
-export const reducer = (state = initalState, action) => {
-  switch (action.type) {
-    case "NEW_MOVIES":
-      return {
-        ...state,
-        movies: action.payload.results.filter(m => m.poster_path),
-        inProgress: false
-      };
-    case "CREATE_SEARCH_TERM":
-      return {
-        ...state,
-        searchTerm: action.payload
-      };
-    case "ASYNC_START":
-      return {
-        ...state,
-        inProgress: true
-      };
-    case "LOGIN":
-      return {
-        ...state,
-        user: action.payload.user,
-        isAuthenticated: action.payload.user ? true : false
-      };
-
-    default:
-      return state;
-  }
-};
-
+//conditional check for PROD rather than dev
 const composeDebug = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default createStore(reducer, composeDebug(applyMiddleware(promiseMiddleware)));

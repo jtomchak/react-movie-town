@@ -5,6 +5,7 @@ const auth = (state = {}, action) => {
         ...state,
         user: action.payload.user,
         isAuthenticated: action.payload.user ? true : false,
+        errors: action.error ? action.payload.errors : null,
         inProgress: false
       };
     default:

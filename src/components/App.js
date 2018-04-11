@@ -11,12 +11,14 @@ import Login from "./Login";
 
 const mapStateToProps = state => ({
   searchTerm: state.common.searchTerm,
-  user: state.common.user,
+  currentUser: state.common.currentUser,
+  redirectTo: state.common.redirectTo,
   userAuthenticated: state.common.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({
-  setSearchTerm: term => dispatch({ type: "CREATE_SEARCH_TERM", payload: term })
+  setSearchTerm: term => dispatch({ type: "CREATE_SEARCH_TERM", payload: term }),
+  onRedirect: () => dispatch({ type: "REDIRECT" })
 });
 
 class App extends Component {
@@ -27,6 +29,11 @@ class App extends Component {
     //reset search term for a new clean search
     if (nextProps.location.pathname === "/") {
       this.props.setSearchTerm("");
+    }
+    if (nextProps.redirectTo) {
+      // this.context.router.replace(nextProps.redirectTo);
+      this.props.history.push(nextProps.redirectTo);
+      this.props.onRedirect();
     }
   }
 

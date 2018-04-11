@@ -201,6 +201,9 @@ const User = {
     * We should be able to see the username, email, token, bio, and image on our store under user property. That's super RAD!!
 
 29. The great refactor
+
+        > What we're looking for
+
     ![Imgur](https://i.imgur.com/mLa29eo.png)
 
 30. How do we redirect after login

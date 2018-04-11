@@ -3,7 +3,6 @@ const auth = (state = {}, action) => {
     case "LOGIN":
       return {
         ...state,
-        user: action.payload.user,
         isAuthenticated: action.payload.user ? true : false,
         inProgress: false
       };

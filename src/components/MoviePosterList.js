@@ -3,7 +3,7 @@ import { Row, Col, Thumbnail, Button, Clearfix } from "react-bootstrap";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
-  movies: state.movies
+  movies: state.common.movies
 });
 
 const MoviePosterList = ({ movies, onClickDetails }) => {

@@ -8,15 +8,18 @@ import Movies from "./Movies";
 import MovieSearch from "./MovieSearch";
 import MovieDetails from "./MovieDetails";
 import Login from "./Login";
+import NavBar from "./NavBar";
 
 const mapStateToProps = state => ({
   searchTerm: state.common.searchTerm,
   user: state.common.user,
-  userAuthenticated: state.common.isAuthenticated
+  isAuthenticated: state.common.isAuthenticated,
+  redirect: state.common.redirect
 });
 
 const mapDispatchToProps = dispatch => ({
-  setSearchTerm: term => dispatch({ type: "CREATE_SEARCH_TERM", payload: term })
+  setSearchTerm: term => dispatch({ type: "CREATE_SEARCH_TERM", payload: term }),
+  redirectTo: () => dispatch({ type: "REDIRECT", payload: null })
 });
 
 class App extends Component {
@@ -28,6 +31,10 @@ class App extends Component {
     if (nextProps.location.pathname === "/") {
       this.props.setSearchTerm("");
     }
+    if (nextProps.redirect) {
+      this.props.history.push(nextProps.redirect);
+      this.props.redirectTo();
+    }
   }
 
   movieSearchTerm = searchTerm => {
@@ -37,19 +44,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar inverse style={{ marginBottom: "0px" }}>
-          <Nav pullRight>
-            <LinkContainer to="/movies">
-              <NavItem eventKey={1}>Movies</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/">
-              <NavItem eventKey={2}>Search</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/login">
-              <NavItem eventKey={3}>Login</NavItem>
-            </LinkContainer>
-          </Nav>
-        </Navbar>
+        <NavBar isAuth={this.props.isAuthenticated} user={this.props.user} />
         <Jumbotron>
           <Grid>
             <h1>{this.props.searchTerm} Movies</h1>

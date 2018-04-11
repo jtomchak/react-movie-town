@@ -28,7 +28,13 @@ export const common = (state = initalState, action) => {
         ...state,
         user: action.payload.user,
         isAuthenticated: action.payload.user ? true : false,
-        inProgress: false
+        inProgress: false,
+        redirect: "/"
+      };
+    case "REDIRECT":
+      return {
+        ...state,
+        redirect: action.payload
       };
 
     default:

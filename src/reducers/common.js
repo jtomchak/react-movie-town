@@ -2,7 +2,8 @@ const initalState = {
   movies: [],
   searchTerm: "",
   isAuthenticated: false,
-  user: null
+  user: null,
+  token: null
 };
 
 export const common = (state = initalState, action) => {
@@ -28,6 +29,7 @@ export const common = (state = initalState, action) => {
       return {
         ...state,
         user: action.payload.user,
+        token: action.payload.user.token,
         isAuthenticated: action.payload.user ? true : false,
         inProgress: false,
         redirect: "/"

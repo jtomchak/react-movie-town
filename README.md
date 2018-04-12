@@ -226,3 +226,26 @@ fetch(API_URL + "users", {
 ```
 
 * We want to handle the promise in our redux middleware, and create the case statements, **ONLY** after we know for sure that our service is working!!!!!
+
+33. We need to create a new service to POST a movie object to `api/movies` and call that service when we click 'Favorites' on our details page. Goodness! We are still calling and resolving the details request in the details component here too. So Sad!!!
+
+```js
+//services.js
+favorite: (movie, userToken) =>
+  fetch(API_URL + "movies", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + userToken
+    },
+    body: JSON.stringify({
+      movie: {
+        movie_id: movie.id,
+        poster_path: movie.poster_path,
+        title: movie.title,
+        overview: movie.overview
+      }
+    })
+  });
+```

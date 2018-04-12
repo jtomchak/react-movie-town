@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
+
+import services from "../services";
 
 class MovieDetails extends Component {
   state = {
@@ -15,10 +18,17 @@ class MovieDetails extends Component {
       )
       .catch(err => console.log(err));
   }
+  onFavoriteClick = () => {
+    services.Movie.favorite(this.state.movie, this.props.token)
+      .then(resp => resp.json())
+      .then(payload => console.log(payload))
+      .catch(err => console.log(err));
+  };
   render() {
     return (
       <div>
         <h2>{this.state.movie.title}</h2>
+        <Button onClick={this.onFavoriteClick}>Favorite</Button>
       </div>
     );
   }

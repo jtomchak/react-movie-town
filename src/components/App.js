@@ -14,6 +14,7 @@ import NavBar from "./NavBar";
 const mapStateToProps = state => ({
   searchTerm: state.common.searchTerm,
   user: state.common.user,
+  token: state.common.token,
   isAuthenticated: state.common.isAuthenticated,
   redirect: state.common.redirect
 });
@@ -61,7 +62,10 @@ class App extends Component {
           path="/movies"
           render={props => <Movies {...props} searchTerm={this.props.searchTerm} />}
         />
-        <Route path="/movies/:movieId" component={MovieDetails} />
+        <Route
+          path="/movies/:movieId"
+          render={props => <MovieDetails {...props} token={this.props.token} />}
+        />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
       </div>

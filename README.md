@@ -249,3 +249,5 @@ favorite: (movie, userToken) =>
     })
   });
 ```
+
+34. In the Movie Details when the 'Favorites' button is clicked we want to invoke and comsume this service to post movie favorite and ensure that it works. **ONLY** after than can we dispatch this to the redux store.

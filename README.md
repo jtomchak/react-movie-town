@@ -211,3 +211,18 @@ const User = {
 31. Conditionally rendering NavBar
 
 32. Sign up Component
+
+* this will look a lot like the Login Component
+* but will need a new services, bc the POST is too a differenct endpoint.
+
+```js
+///services.js
+fetch(API_URL + "users", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+```
+
+* We want to handle the promise in our redux middleware, and create the case statements, **ONLY** after we know for sure that our service is working!!!!!

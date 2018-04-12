@@ -8,6 +8,7 @@ import Movies from "./Movies";
 import MovieSearch from "./MovieSearch";
 import MovieDetails from "./MovieDetails";
 import Login from "./Login";
+import Signup from "./Signup";
 import NavBar from "./NavBar";
 
 const mapStateToProps = state => ({
@@ -62,6 +63,7 @@ class App extends Component {
         />
         <Route path="/movies/:movieId" component={MovieDetails} />
         <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
       </div>
     );
   }

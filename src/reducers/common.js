@@ -24,6 +24,7 @@ export const common = (state = initalState, action) => {
         inProgress: true
       };
     case "LOGIN":
+    case "REGISTER":
       return {
         ...state,
         user: action.payload.user,

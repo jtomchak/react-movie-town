@@ -26,6 +26,21 @@ const User = {
           password: password
         }
       })
+    }),
+  register: (username, email, password) =>
+    fetch(API_URL + "users", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        user: {
+          username: username,
+          email: email,
+          password: password
+        }
+      })
     })
 };
 

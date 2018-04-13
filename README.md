@@ -254,7 +254,9 @@ favorite: (movie, userToken) =>
 
 35. Render Favorites to 'Home' page
 
+* This will invole reusing the MovieCards Component, separating out the props we pass it. So it can either be an array of favorite movies, or an array of movies from search.
+
 36. Able to remove favorites.
     * We'll need a delete service for that specific movie id
     * Then let's call that in our Movie Details, like we're calling everything else. lol
-    *
+    * Once the service works we will be able to click it, go back to the home page and will be gone!. RAD

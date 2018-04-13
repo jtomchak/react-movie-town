@@ -26,6 +26,15 @@ const Movie = {
           overview: movie.overview
         }
       })
+    }),
+  getFavorites: userToken =>
+    fetch(API_URL + "movies", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + userToken
+      }
     })
 };
 

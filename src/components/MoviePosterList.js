@@ -2,10 +2,6 @@ import React from "react";
 import { Row, Col, Thumbnail, Button, Clearfix } from "react-bootstrap";
 import { connect } from "react-redux";
 
-const mapStateToProps = state => ({
-  movies: state.common.movies
-});
-
 const MoviePosterList = ({ movies, onClickDetails }) => {
   //const MovieCardItem = props => {
   // let movies = props.movies;
@@ -13,7 +9,7 @@ const MoviePosterList = ({ movies, onClickDetails }) => {
   return (
     <Row>
       {movies.map((movie, idx) => (
-        <div key={movie.id}>
+        <div key={movie.id || movie.movie_id}>
           <Col sm={6} md={4}>
             <Thumbnail src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="242x200">
               <h3>{movie.title}</h3>
@@ -33,4 +29,4 @@ const MoviePosterList = ({ movies, onClickDetails }) => {
   );
 };
 
-export default connect(mapStateToProps)(MoviePosterList);
+export default MoviePosterList;

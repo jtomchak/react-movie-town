@@ -5,6 +5,10 @@ import services from "../services";
 
 import MovieCards from "./MovieCards";
 
+const mapStateToProps = state => ({
+  movies: state.common.movies
+});
+
 const mapDispatchToProps = dispatch => ({
   newMovies: movies => dispatch({ type: "NEW_MOVIES", payload: movies })
 });
@@ -19,11 +23,13 @@ class Movies extends Component {
     this.props.history.push(`movies/${movieId}`);
   };
   render() {
-    {
-      this.props.searchTerm && <p>No Search Term === No Movies</p>;
-    }
-    return <MovieCards onClickDetails={this.onClickDetails} />;
+    return (
+      <div>
+        {!this.props.searchTerm && <p>No Search Term MEANS No Movies</p>}
+        <MovieCards movies={this.props.movies} onClickDetails={this.onClickDetails} />;
+      </div>
+    );
   }
 }
 
-export default connect(null, mapDispatchToProps)(Movies);
+export default connect(mapStateToProps, mapDispatchToProps)(Movies);

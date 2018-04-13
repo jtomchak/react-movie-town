@@ -1,5 +1,7 @@
+import { InputGroup } from "react-bootstrap";
 const initalState = {
   movies: [],
+  favoriteMovies: [],
   searchTerm: "",
   isAuthenticated: false,
   user: null,
@@ -12,6 +14,12 @@ export const common = (state = initalState, action) => {
       return {
         ...state,
         movies: action.payload.results.filter(m => m.poster_path),
+        inProgress: false
+      };
+    case "MOVIE_FAVORITES":
+      return {
+        ...state,
+        favoriteMovies: action.payload.movies,
         inProgress: false
       };
     case "CREATE_SEARCH_TERM":

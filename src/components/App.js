@@ -55,7 +55,13 @@ class App extends Component {
         <Route
           exact
           path="/"
-          render={props => <MovieSearch {...props} movieSearchTerm={this.movieSearchTerm} />}
+          render={props => (
+            <MovieSearch
+              {...props}
+              movieSearchTerm={this.movieSearchTerm}
+              token={this.props.token}
+            />
+          )}
         />
         <Route
           exact

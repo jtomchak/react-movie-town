@@ -27,6 +27,15 @@ const Movie = {
         }
       })
     }),
+  removeFavorite: (movieId, userToken) =>
+    fetch(API_URL + "movies/" + movieId, {
+      method: "delete",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + userToken
+      }
+    }),
   getFavorites: userToken =>
     fetch(API_URL + "movies", {
       method: "GET",

@@ -4,6 +4,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Link, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
+import services from "../services";
+
 import Movies from "./Movies";
 import MovieSearch from "./MovieSearch";
 import MovieDetails from "./MovieDetails";
@@ -16,7 +18,8 @@ const mapStateToProps = state => ({
   user: state.common.user,
   token: state.common.token,
   isAuthenticated: state.common.isAuthenticated,
-  redirect: state.common.redirect
+  redirect: state.common.redirect,
+  favoriteMovies: state.common.favoriteMovies
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -43,6 +46,15 @@ class App extends Component {
     this.props.setSearchTerm(searchTerm);
     this.props.history.push("/movies");
   };
+
+  onRemoveFavorite = movieId => {
+    const movie = this.props.favoriteMovies.find(m => parseInt(movieId) === m.movie_id);
+    services.Movie.removeFavorite(movie._id, this.props.token)
+      .then(resp => resp.json())
+      .then(payload => console.log(payload))
+      .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <div>
@@ -70,7 +82,13 @@ class App extends Component {
         />
         <Route
           path="/movies/:movieId"
-          render={props => <MovieDetails {...props} token={this.props.token} />}
+          render={props => (
+            <MovieDetails
+              {...props}
+              token={this.props.token}
+              onRemoveFavorite={this.onRemoveFavorite}
+            />
+          )}
         />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />

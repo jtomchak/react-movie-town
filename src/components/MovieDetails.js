@@ -24,11 +24,17 @@ class MovieDetails extends Component {
       .then(payload => console.log(payload))
       .catch(err => console.log(err));
   };
+
+  removeFavorite = () => {
+    this.props.onRemoveFavorite(this.props.match.params.movieId);
+  };
+
   render() {
     return (
       <div>
         <h2>{this.state.movie.title}</h2>
         <Button onClick={this.onFavoriteClick}>Favorite</Button>
+        <Button onClick={this.removeFavorite}>Remove Favorite</Button>
       </div>
     );
   }

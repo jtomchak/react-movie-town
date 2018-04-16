@@ -257,6 +257,10 @@ favorite: (movie, userToken) =>
 * This will invole reusing the MovieCards Component, separating out the props we pass it. So it can either be an array of favorite movies, or an array of movies from search.
 
 36. Able to remove favorites.
-    * We'll need a delete service for that specific movie id
+    * We'll need a delete service for that specific movie id, now remember **this is the object ID of the movie as we have it stored as a favorite.** not the movie id property from the movies service.
+    ```js
+      fetch(API_URL + "movies/" + movieId, {
+      method: "delete",
+    ```
     * Then let's call that in our Movie Details, like we're calling everything else. lol
     * Once the service works we will be able to click it, go back to the home page and will be gone!. RAD
